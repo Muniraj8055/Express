@@ -1,0 +1,36 @@
+    
+    
+    * Controllers are typically callback functions that corresponds to the routers to handle requests.
+      It is a good design principle to keep the code concise and readable.
+
+    1. In your project's root directory, create 2 folders and name them 'routes' and 'controllers'.
+
+    2. Then, in each folder, create a 'tea.js' file for our tea route and tea controller. 
+       It is a convention to name the controller the same as the route which it is handling. 
+
+    3. Awesome! Now, open your routes/tea.js file. We can create our first route as follows:
+
+       a. Create an express router object to set up our routes
+       b. Import our tea controller from our controllers/tea.js file we created earlier
+       c. Create our first route with the controller function as the callback to handle the request.
+       d. Export the route to use in our server.js
+  
+_________________________________________________________________________________________________
+              const express = require('express'); //import express
+              const router  = express.Router(); 
+              const teaController = require('../controllers/tea'); 
+              router.post('/tea', teaController.newTea); 
+              module.exports = router; // export to use in server.js
+__________________________________________________________________________________________________
+              
+              In controllers/tea.js:
+              
+              // newTea function for post tea route
+                 
+                 const newTea = (req, res, next) => {
+                 res.json({message: "POST new tea"}); // dummy function for now
+                 };
+
+                 module.exports = {newTea};
+
+_________________________________________________________________________________________________
